@@ -1,38 +1,40 @@
 {
   "name": "n8n-nodes-nod-marketplace",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "n8n community node for interacting with the NOD Marketplace API.",
-  "main": "nodes/NodMarketplace.node.js",
-  "types": "nodes/NodMarketplace.node.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build"
-  },
   "keywords": [
-    "n8n",
-    "n8n-community-node",
-    "automation",
-    "nod",
-    "marketplace",
-    "ecommerce",
     "n8n-community-node-package"
   ],
-  "author": "Daniel P",
   "license": "MIT",
+  "homepage": "https://github.com/akizor/n8n-nodes-nod-marketplace#readme",
+  "author": {
+    "name": "Daniel P",
+    "email": "daniel.placinta@yahoo.com"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akizor/n8n-nodes-nod-marketplace.git"
+    "url": "https://github.com/akizor/n8n-nodes-nod-marketplace.git"
   },
-  "bugs": {
-    "url": "https://github.com/akizor/n8n-nodes-nod-marketplace/issues"
+  "engines": {
+    "node": ">=18.10",
+    "pnpm": ">=9.1"
   },
-  "homepage": "https://github.com/akizor/n8n-nodes-nod-marketplace#readme",
+  "packageManager": "pnpm@9.1.4",
+  "main": "nodes/NodMarketplace.node.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "files": [
+    "nodes"
+  ],
   "n8n": {
+    "n8nNodesApiVersion": 1,
     "credentials": [
-      "NodMarketplaceApi"
+      "nodes/NodMarketplaceApi.credentials.js"
     ],
     "nodes": [
-      "NodMarketplace"
+      "nodes/NodMarketplace.node.js"
     ]
   },
   "devDependencies": {
@@ -40,9 +42,8 @@
     "n8n-workflow": "^1.82.0",
     "typescript": "^5.0.0"
   },
-  "files": [
-    "nodes/",
-    "README.md",
-    "LICENSE"
-  ]
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "dependencies": {}
 }
