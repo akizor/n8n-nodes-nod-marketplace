@@ -126,6 +126,79 @@ class NodMarketplace {
                         },
                     },
                 },
+                {
+                    displayName: 'Code',
+                    name: 'code',
+                    type: 'string',
+                    default: '',
+                    description: 'Product code (part number) to filter by',
+                    displayOptions: {
+                        show: {
+                            operation: ['getProducts'],
+                        },
+                    },
+                },
+                {
+                    displayName: 'Manufacturer',
+                    name: 'manufacturer',
+                    type: 'string',
+                    default: '',
+                    description: 'Manufacturer name to filter by',
+                    displayOptions: {
+                        show: {
+                            operation: ['getProducts'],
+                        },
+                    },
+                },
+                {
+                    displayName: 'Category',
+                    name: 'category',
+                    type: 'string',
+                    default: '',
+                    description: 'Category ID to filter by',
+                    displayOptions: {
+                        show: {
+                            operation: ['getProducts'],
+                        },
+                    },
+                },
+                {
+                    displayName: 'Search',
+                    name: 'search',
+                    type: 'string',
+                    default: '',
+                    description: 'Search term to filter products',
+                    displayOptions: {
+                        show: {
+                            operation: ['getProducts'],
+                        },
+                    },
+                },
+                {
+                    displayName: 'Only Available (Stock)',
+                    name: 'stock',
+                    type: 'boolean',
+                    default: false,
+                    description: 'Show only products that are in stock',
+                    displayOptions: {
+                        show: {
+                            operation: ['getProducts'],
+                        },
+                    },
+                },
+                {
+                    displayName: 'Only Promotional',
+                    name: 'promotion',
+                    type: 'boolean',
+                    default: false,
+                    description: 'Show only promotional products',
+                    displayOptions: {
+                        show: {
+                            operation: ['getProducts'],
+                        },
+                    },
+                },
+                // Add more filters as needed
             ],
         };
     }
@@ -162,6 +235,25 @@ class NodMarketplace {
                 const page = this.getNodeParameter('page', 0);
                 const count = 100;
                 let queryString = `/products/?count=${count}&page=${page}`;
+                // Add filters if provided
+                const code = this.getNodeParameter('code', 0, '');
+                const manufacturer = this.getNodeParameter('manufacturer', 0, '');
+                const category = this.getNodeParameter('category', 0, '');
+                const search = this.getNodeParameter('search', 0, '');
+                const stock = this.getNodeParameter('stock', 0, false);
+                const promotion = this.getNodeParameter('promotion', 0, false);
+                if (code)
+                    queryString += `&code=${encodeURIComponent(code)}`;
+                if (manufacturer)
+                    queryString += `&manufacturer=${encodeURIComponent(manufacturer)}`;
+                if (category)
+                    queryString += `&category=${encodeURIComponent(category)}`;
+                if (search)
+                    queryString += `&search=${encodeURIComponent(search)}`;
+                if (stock)
+                    queryString += `&only_available=1`;
+                if (promotion)
+                    queryString += `&only_promotional=1`;
                 const headers = buildHeaders(username, password, 'GET', queryString);
                 const url = apiUrl.replace(/\/$/, '') + queryString;
                 const options = {
