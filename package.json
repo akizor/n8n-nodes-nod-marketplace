@@ -1,9 +1,9 @@
 {
   "name": "n8n-nodes-nod-marketplace",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "n8n community node for interacting with the NOD Marketplace API.",
-  "main": "dist/nodes/NodMarketplace.node.js",
-  "types": "dist/nodes/NodMarketplace.node.d.ts",
+  "main": "nodes/NodMarketplace.node.js",
+  "types": "nodes/NodMarketplace.node.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
@@ -39,5 +39,10 @@
     "@types/node": "^24.0.13",
     "n8n-workflow": "^1.82.0",
     "typescript": "^5.0.0"
-  }
+  },
+  "files": [
+    "nodes/",
+    "README.md",
+    "LICENSE"
+  ]
 }
