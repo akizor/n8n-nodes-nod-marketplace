@@ -1,0 +1,43 @@
+{
+  "name": "n8n-nodes-nod-marketplace",
+  "version": "1.0.0",
+  "description": "n8n community node for interacting with the NOD Marketplace API.",
+  "main": "dist/nodes/NodMarketplace.node.js",
+  "types": "dist/nodes/NodMarketplace.node.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "n8n",
+    "n8n-community-node",
+    "automation",
+    "nod",
+    "marketplace",
+    "ecommerce",
+    "n8n-community-node-package"
+  ],
+  "author": "Akizor <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/n8n-nodes-nod-marketplace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/n8n-nodes-nod-marketplace/issues"
+  },
+  "homepage": "https://github.com/yourusername/n8n-nodes-nod-marketplace#readme",
+  "n8n": {
+    "credentials": [
+      "NodMarketplaceApi"
+    ],
+    "nodes": [
+      "NodMarketplace"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "n8n-workflow": "^1.82.0",
+    "typescript": "^5.0.0"
+  }
+}
