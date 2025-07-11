@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NodMarketplace = void 0;
+exports.tools = exports.NodMarketplace = void 0;
 const crypto = __importStar(require("crypto"));
 class NodMarketplace {
     constructor() {
@@ -368,3 +368,42 @@ class NodMarketplace {
     }
 }
 exports.NodMarketplace = NodMarketplace;
+exports.tools = [
+    {
+        name: 'getProducts',
+        description: 'Retrieve a list of products from the NOD Marketplace with optional filters.',
+        parameters: [
+            { name: 'page', type: 'number', description: 'Page number for pagination.' },
+            { name: 'manufacturer', type: 'string', description: 'Filter by manufacturer name.' },
+            { name: 'category', type: 'string', description: 'Filter by category ID.' },
+            { name: 'stock', type: 'boolean', description: 'Only show products in stock.' },
+            { name: 'promotion', type: 'boolean', description: 'Only show promotional products.' },
+            { name: 'search', type: 'string', description: 'Search term for product name or description.' },
+            { name: 'code', type: 'string', description: 'Filter by product code (part number).' },
+        ],
+    },
+    {
+        name: 'getProduct',
+        description: 'Retrieve a single product by its ID.',
+        parameters: [
+            { name: 'productId', type: 'string', description: 'The ID of the product to retrieve.' },
+        ],
+    },
+    {
+        name: 'getCategories',
+        description: 'Retrieve all product categories from the NOD Marketplace.',
+        parameters: [],
+    },
+    {
+        name: 'getCategory',
+        description: 'Retrieve a single category by its ID.',
+        parameters: [
+            { name: 'categoryId', type: 'string', description: 'The ID of the category to retrieve.' },
+        ],
+    },
+    {
+        name: 'getManufacturers',
+        description: 'Retrieve all manufacturers from the NOD Marketplace.',
+        parameters: [],
+    },
+];
