@@ -213,12 +213,12 @@ export class NodMarketplace implements INodeType {
                 const category = this.getNodeParameter('category', 0, '') as string;
                 let search = this.getNodeParameter('search', 0, '') as string;
                 search = search.trim();
-                if (search) params.push(['search', search]);
                 const stock = this.getNodeParameter('stock', 0, false) as boolean;
                 const promotion = this.getNodeParameter('promotion', 0, false) as boolean;
                 if (code) params.push(['code', code]);
                 if (manufacturer) params.push(['manufacturer', manufacturer]);
                 if (category) params.push(['category', category]);
+                if (search) params.push(['search', search]);
                 if (stock) params.push(['only_available', '1']);
                 if (promotion) params.push(['only_promotional', '1']);
                 // Build query string

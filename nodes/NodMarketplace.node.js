@@ -244,8 +244,6 @@ class NodMarketplace {
                 const category = this.getNodeParameter('category', 0, '');
                 let search = this.getNodeParameter('search', 0, '');
                 search = search.trim();
-                if (search)
-                    params.push(['search', search]);
                 const stock = this.getNodeParameter('stock', 0, false);
                 const promotion = this.getNodeParameter('promotion', 0, false);
                 if (code)
@@ -254,6 +252,8 @@ class NodMarketplace {
                     params.push(['manufacturer', manufacturer]);
                 if (category)
                     params.push(['category', category]);
+                if (search)
+                    params.push(['search', search]);
                 if (stock)
                     params.push(['only_available', '1']);
                 if (promotion)
