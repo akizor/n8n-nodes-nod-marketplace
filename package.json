@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-nod-marketplace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "n8n community node for interacting with the NOD Marketplace API.",
   "main": "dist/nodes/NodMarketplace.node.js",
   "types": "dist/nodes/NodMarketplace.node.d.ts",
@@ -21,12 +21,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/n8n-nodes-nod-marketplace.git"
+    "url": "git+https://github.com/akizor/n8n-nodes-nod-marketplace.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/n8n-nodes-nod-marketplace/issues"
+    "url": "https://github.com/akizor/n8n-nodes-nod-marketplace/issues"
   },
-  "homepage": "https://github.com/yourusername/n8n-nodes-nod-marketplace#readme",
+  "homepage": "https://github.com/akizor/n8n-nodes-nod-marketplace#readme",
   "n8n": {
     "credentials": [
       "NodMarketplaceApi"
