@@ -234,26 +234,32 @@ class NodMarketplace {
             case 'getProducts': {
                 const page = this.getNodeParameter('page', 0);
                 const count = 100;
-                let queryString = `/products/?count=${count}&page=${page}`;
-                // Add filters if provided
+                // Build query params as array for consistent order
+                const params = [
+                    ['count', count.toString()],
+                    ['page', page.toString()],
+                ];
                 const code = this.getNodeParameter('code', 0, '');
                 const manufacturer = this.getNodeParameter('manufacturer', 0, '');
                 const category = this.getNodeParameter('category', 0, '');
-                const search = this.getNodeParameter('search', 0, '');
+                let search = this.getNodeParameter('search', 0, '');
+                search = search.trim();
+                if (search)
+                    params.push(['search', search]);
                 const stock = this.getNodeParameter('stock', 0, false);
                 const promotion = this.getNodeParameter('promotion', 0, false);
                 if (code)
-                    queryString += `&code=${encodeURIComponent(code)}`;
+                    params.push(['code', code]);
                 if (manufacturer)
-                    queryString += `&manufacturer=${encodeURIComponent(manufacturer)}`;
+                    params.push(['manufacturer', manufacturer]);
                 if (category)
-                    queryString += `&category=${encodeURIComponent(category)}`;
-                if (search)
-                    queryString += `&search=${encodeURIComponent(search)}`;
+                    params.push(['category', category]);
                 if (stock)
-                    queryString += `&only_available=1`;
+                    params.push(['only_available', '1']);
                 if (promotion)
-                    queryString += `&only_promotional=1`;
+                    params.push(['only_promotional', '1']);
+                // Build query string
+                const queryString = '/products/?' + params.map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&');
                 const headers = buildHeaders(username, password, 'GET', queryString);
                 const url = apiUrl.replace(/\/$/, '') + queryString;
                 const options = {
